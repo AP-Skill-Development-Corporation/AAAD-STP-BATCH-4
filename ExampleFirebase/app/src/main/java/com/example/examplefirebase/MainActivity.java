@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         pass = findViewById(R.id.pass);
         auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser()!=null){
+            startActivity(new Intent(MainActivity.this,HomeActivity.class));
+            finish();
+        }
     }
 
     public void login(View view) {
@@ -44,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+                            startActivity(new Intent(MainActivity.this,HomeActivity.class));
                             Log.i("Apssdc","Authentication Successful");
+                            finish();
                         }else{
                             Log.i("Apssdc","Authentication Failed");
                         }
