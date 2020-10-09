@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, ""+email,
                                     Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(MainActivity.this,HomeActivity.class));
-                            finish();   
+                            finish();
                         }else{
                             Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_SHORT).show();
                         }
