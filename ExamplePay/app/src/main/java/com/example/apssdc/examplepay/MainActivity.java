@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.razorpay.Checkout;
@@ -12,11 +13,12 @@ import com.razorpay.PaymentResultListener;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements PaymentResultListener {
-
+    EditText et;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        et= findViewById(R.id.cost);
         Checkout.preload(this);
     }
 
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements PaymentResultList
             JSONObject obj = new JSONObject();
             obj.put("name","Chaitanya");
             obj.put("currency","INR");
-            obj.put("amount","30000");
+            obj.put("amount",et.getText().toString());
             ch.open(this,obj);
         }catch (Exception e){
             Toast.makeText(this, ""+e, Toast.LENGTH_SHORT).show();
